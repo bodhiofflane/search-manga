@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchManga } from '../reducers/mangaSlice';
+
 import {
     Box,
     Grid,
@@ -5,15 +11,26 @@ import {
     Typography,
     Divider,
 } from '@mui/material';
-import Filters from '../components/Filter';
-import MangaList from '../components/MangaList';
-import MainPagination from '../components/MainPagination';
 
+import Filters from '../containers/Filters';
+import MangaList from '../containers/MangaList';
+import MainPagination from '../components/MainPagination';
 import SortSelect from '../components/SortSelect';
+import TotalManga from '../components/TotalManga';
 
 
 
 const Home = () => {
+
+    const currentPage = useSelector(state => state.manga.currentPage);
+    const sortBy = useSelector(state => state.manga.sortBy);
+    const dispatch = useDispatch();
+
+
+
+    useEffect(() => {
+        dispatch(fetchManga({currentPage, sortBy}));
+    }, [dispatch, currentPage, sortBy]);
 
     return (
         <Box>
@@ -36,12 +53,15 @@ const Home = () => {
                             <Divider sx={{ my: '15px' }} />
 
                             {/* Manga List */}
+                            <MainPagination/>
+                            
+                            <Divider sx={{ my: '15px' }} />
                             <MangaList/>
                             <Divider sx={{ my: '15px' }} />
                             
                             {/* Часть с пагинацией. Нужно перенести! */}
                             <MainPagination/>
-
+                            <TotalManga/>
                         </Box>
                     </Grid>
 

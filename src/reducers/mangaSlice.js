@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
-import useJikanService from '../services/useJikanService';
+import jikanService from '../services/jikanService';
 
 const initialState = {
     manga: [],
@@ -9,13 +8,15 @@ const initialState = {
     currentPage: 1, // Pagination starts from the first page.
     lastVisiblePage: 0,
     totalItems: 0,
+    sortBy: 'mal_id', // Such application terms.
 }
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    (pageNumber) => {
-        const {getAllManga} = useJikanService()
-        return getAllManga(pageNumber);
+    ({currentPage, sortBy}) => {
+        console.log(currentPage, sortBy);
+        const {getAllManga} = jikanService()
+        return getAllManga(currentPage, sortBy);
     }
 );
 
@@ -24,7 +25,10 @@ const mangaSlice = createSlice({
     initialState,
     reducers: {
         setCurrentPage: (state, action) => {
-            state.currentPage = action.payload
+            state.currentPage = action.payload;
+        },
+        setSortBy: (state, action) => {
+            state.sortBy = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -46,8 +50,8 @@ const mangaSlice = createSlice({
     }
 });
 
-const {actions, reducer} = mangaSlice;
+const { actions, reducer } = mangaSlice;
 
-export const {setCurrentPage} = actions;
+export const { setCurrentPage, setSortBy } = actions;
 
 export default reducer;
