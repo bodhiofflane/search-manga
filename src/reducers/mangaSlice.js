@@ -9,14 +9,14 @@ const initialState = {
     lastVisiblePage: 0,
     totalItems: 0,
     sortBy: 'mal_id', // Such application terms.
+    dateRange: [1930, 2023],
 }
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    ({currentPage, sortBy}) => {
-        console.log(currentPage, sortBy);
+    ({currentPage, sortBy, dateRange}) => {
         const {getAllManga} = jikanService()
-        return getAllManga(currentPage, sortBy);
+        return getAllManga(currentPage, sortBy, dateRange);
     }
 );
 
@@ -29,7 +29,10 @@ const mangaSlice = createSlice({
         },
         setSortBy: (state, action) => {
             state.sortBy = action.payload;
-        }
+        },
+        setDateRange: (state, action) => {
+            state.dateRange = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -52,6 +55,6 @@ const mangaSlice = createSlice({
 
 const { actions, reducer } = mangaSlice;
 
-export const { setCurrentPage, setSortBy } = actions;
+export const { setCurrentPage, setSortBy, setDateRange } = actions;
 
 export default reducer;

@@ -28,7 +28,6 @@ const SortSelect = () => {
         dispatch(setSortBy(event.target.value))
     };
 
-    console.log(sortBy)
     return (
         <Box>
             <FormControl fullWidth>

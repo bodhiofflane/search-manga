@@ -11,6 +11,8 @@ const MangaList = () => {
     const allManga = useSelector((state) => state.manga.manga);
     const loadingStatus = useSelector((state) => state.manga.loadingStatus);
 
+
+
     // Просто что бы был мемоизированный массив.
     const renderMangaList = useMemo(() => {
         return allManga.map((manga) => {

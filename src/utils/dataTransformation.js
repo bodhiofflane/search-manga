@@ -4,7 +4,7 @@ export const _transformAllManga = (manga) => {
         name: manga.title,
         thumbnail: manga.images.webp.large_image_url,
         publicationPeriod:
-            manga.published.prop.from.year || 'Date unknown' +
+            (manga.published.prop.from.year || 'Date unknown') +
             ' - ' +
             (manga.published.prop.to.year || '...'),
     };

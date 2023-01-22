@@ -24,13 +24,14 @@ const Home = () => {
 
     const currentPage = useSelector(state => state.manga.currentPage);
     const sortBy = useSelector(state => state.manga.sortBy);
+    const dateRange = useSelector(state => state.manga.dateRange);
     const dispatch = useDispatch();
 
 
 
     useEffect(() => {
-        dispatch(fetchManga({currentPage, sortBy}));
-    }, [dispatch, currentPage, sortBy]);
+        dispatch(fetchManga({currentPage, sortBy, dateRange}));
+    }, [dispatch, currentPage, sortBy, dateRange]);
 
     return (
         <Box>
