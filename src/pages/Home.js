@@ -4,13 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchManga } from '../reducers/mangaSlice';
 
-import {
-    Box,
-    Grid,
-    Container,
-    Typography,
-    Divider,
-} from '@mui/material';
+import { Box, Grid, Container, Typography, Divider } from '@mui/material';
 
 import Filters from '../containers/Filters';
 import MangaList from '../containers/MangaList';
@@ -18,20 +12,17 @@ import MainPagination from '../components/MainPagination';
 import SortSelect from '../components/SortSelect';
 import TotalManga from '../components/TotalManga';
 
-
-
 const Home = () => {
-
-    const currentPage = useSelector(state => state.manga.currentPage);
-    const sortBy = useSelector(state => state.manga.sortBy);
-    const dateRange = useSelector(state => state.manga.dateRange);
+    const currentPage = useSelector((state) => state.manga.currentPage);
+    const sortBy = useSelector((state) => state.manga.sortBy);
+    const dateRange = useSelector((state) => state.manga.dateRange);
+    const filterByType = useSelector((state) => state.manga.filterByType);
+    const sfw = useSelector((state) => state.manga.sfw);
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
-        dispatch(fetchManga({currentPage, sortBy, dateRange}));
-    }, [dispatch, currentPage, sortBy, dateRange]);
+        dispatch(fetchManga({ currentPage, sortBy, dateRange, filterByType, sfw }));
+    }, [dispatch, currentPage, sortBy, dateRange, filterByType, sfw]);
 
     return (
         <Box>
@@ -54,15 +45,15 @@ const Home = () => {
                             <Divider sx={{ my: '15px' }} />
 
                             {/* Manga List */}
-                            <MainPagination/>
-                            
+                            <MainPagination />
+
                             <Divider sx={{ my: '15px' }} />
-                            <MangaList/>
+                            <MangaList />
                             <Divider sx={{ my: '15px' }} />
-                            
+
                             {/* Часть с пагинацией. Нужно перенести! */}
-                            <MainPagination/>
-                            <TotalManga/>
+                            <MainPagination />
+                            <TotalManga />
                         </Box>
                     </Grid>
 
@@ -77,7 +68,6 @@ const Home = () => {
                             </Typography>
 
                             <Filters />
-
                         </Box>
                     </Grid>
                 </Grid>

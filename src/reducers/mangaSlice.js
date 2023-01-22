@@ -10,13 +10,15 @@ const initialState = {
     totalItems: 0,
     sortBy: 'mal_id', // Such application terms.
     dateRange: [1930, 2023],
+    filterByType: 'all',
+    sfw: false,
 }
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    ({currentPage, sortBy, dateRange}) => {
+    ({currentPage, sortBy, dateRange, filterByType, sfw}) => {
         const {getAllManga} = jikanService()
-        return getAllManga(currentPage, sortBy, dateRange);
+        return getAllManga(currentPage, sortBy, dateRange, filterByType, sfw);
     }
 );
 
@@ -33,6 +35,12 @@ const mangaSlice = createSlice({
         setDateRange: (state, action) => {
             state.dateRange = action.payload;
         },
+        setFilterByType: (state, action) => {
+            state.filterByType = action.payload;
+        },
+        setSfw: (state) => {
+            state.sfw = !state.sfw
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -55,6 +63,6 @@ const mangaSlice = createSlice({
 
 const { actions, reducer } = mangaSlice;
 
-export const { setCurrentPage, setSortBy, setDateRange } = actions;
+export const { setCurrentPage, setSortBy, setDateRange, setFilterByType, setSfw } = actions;
 
 export default reducer;
