@@ -8,17 +8,18 @@ const initialState = {
     currentPage: 1, // Pagination starts from the first page.
     lastVisiblePage: 0,
     totalItems: 0,
-    sortBy: 'mal_id', // Such application terms.
-    dateRange: [1930, 2023],
-    filterByType: 'all',
+    sortBy: '', // Such application terms.
+    dateRange: [],
+    filterByType: '',
     sfw: false,
-}
+    mangaStatus: '',
+};
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    ({currentPage, sortBy, dateRange, filterByType, sfw}) => {
-        const {getAllManga} = jikanService()
-        return getAllManga(currentPage, sortBy, dateRange, filterByType, sfw);
+    ({ currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus }) => {
+        const { getAllManga } = jikanService();
+        return getAllManga(currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus);
     }
 );
 
@@ -39,8 +40,12 @@ const mangaSlice = createSlice({
             state.filterByType = action.payload;
         },
         setSfw: (state) => {
-            state.sfw = !state.sfw
-        }
+            state.sfw = !state.sfw;
+        },
+        setMangaStatus: (state, action) => {
+            state.mangaStatus = action.payload;
+            state.dateRange = [];
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -50,7 +55,8 @@ const mangaSlice = createSlice({
             .addCase(fetchManga.fulfilled, (state, action) => {
                 state.manga = action.payload.mangaData;
                 state.currentPage = action.payload.paginationData.currentPage;
-                state.lastVisiblePage = action.payload.paginationData.lastVisiblePage;
+                state.lastVisiblePage =
+                    action.payload.paginationData.lastVisiblePage;
                 state.totalItems = action.payload.paginationData.totalItems;
                 state.loadingStatus = 'waiting';
             })
@@ -58,11 +64,18 @@ const mangaSlice = createSlice({
                 state.loadingStatus = 'error';
             })
             .addDefaultCase(() => {});
-    }
+    },
 });
 
 const { actions, reducer } = mangaSlice;
 
-export const { setCurrentPage, setSortBy, setDateRange, setFilterByType, setSfw } = actions;
+export const {
+    setCurrentPage,
+    setSortBy,
+    setDateRange,
+    setFilterByType,
+    setSfw,
+    setMangaStatus,
+} = actions;
 
 export default reducer;

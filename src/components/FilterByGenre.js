@@ -1,3 +1,5 @@
+// The API does not provide data on individual genres. The instructions ask you to use numerical values.
+
 import { useState } from 'react';
 
 import {
@@ -16,9 +18,10 @@ const FilterByGenre = () => {
 
     return (
         <>
-            <Typography>Genres</Typography>
+            <Typography>Genres (API problems)</Typography>
             <FormControl fullWidth>
                 <Select
+                    disabled
                     displayEmpty
                     labelId="genre-select"
                     id="genre-select"

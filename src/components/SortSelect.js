@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 const menuItems = [
-    {value: 'mal_id', title: <em>None</em>},
+    {value: '', title: <em>None</em>},
     {value: 'title', title: 'Name'},
     {value: 'rating', title: 'Rating'},
     {value: 'score', title: 'Score'},

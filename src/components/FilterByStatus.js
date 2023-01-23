@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setMangaStatus } from '../reducers/mangaSlice';
 
 import {
     Typography,
@@ -8,11 +10,21 @@ import {
     Divider,
 } from '@mui/material';
 
+const statuses = [
+    { value: 'publishing', title: 'Ongoing' },
+    { value: 'complete', title: 'Complited' },
+    { value: 'hiatus', title: 'Break' },
+    { value: 'discontinued', title: 'Discontinued' },
+    { value: 'upcoming', title: 'Announced' },
+];
+
 const FilterByStatus = () => {
-    const [status, setStatus] = useState('');
+
+    const mangaStatus = useSelector(state => state.manga.mangaStatus);
+    const dispatch = useDispatch();
+    
     const handleChangeStatus = (event) => {
-        console.log(event);
-        setStatus(event.target.value);
+        dispatch(setMangaStatus(event.target.value));
     };
 
     return (
@@ -23,15 +35,19 @@ const FilterByStatus = () => {
                     displayEmpty
                     labelId="status-select"
                     id="status-select"
-                    value={status}
+                    value={mangaStatus}
                     onChange={handleChangeStatus}
                 >
                     <MenuItem value={''}>
                         <em>Select status</em>
                     </MenuItem>
-                    <MenuItem value={'ongoing'}>Ongoing</MenuItem>
-                    <MenuItem value={'completed'}>Completed</MenuItem>
-                    <MenuItem value={'announcement'}>Announcement</MenuItem>
+                    {statuses.map(({ value, title }) => {
+                        return (
+                            <MenuItem key={value} value={value}>
+                                {title}
+                            </MenuItem>
+                        );
+                    })}
                 </Select>
             </FormControl>
             <Divider sx={{ my: '15px' }} />

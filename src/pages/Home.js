@@ -18,11 +18,29 @@ const Home = () => {
     const dateRange = useSelector((state) => state.manga.dateRange);
     const filterByType = useSelector((state) => state.manga.filterByType);
     const sfw = useSelector((state) => state.manga.sfw);
+    const mangaStatus = useSelector((state) => state.manga.mangaStatus);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchManga({ currentPage, sortBy, dateRange, filterByType, sfw }));
-    }, [dispatch, currentPage, sortBy, dateRange, filterByType, sfw]);
+        dispatch(
+            fetchManga({
+                currentPage,
+                sortBy,
+                dateRange,
+                filterByType,
+                sfw,
+                mangaStatus,
+            })
+        );
+    }, [
+        dispatch,
+        currentPage,
+        sortBy,
+        dateRange,
+        filterByType,
+        sfw,
+        mangaStatus,
+    ]);
 
     return (
         <Box>

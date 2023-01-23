@@ -40,7 +40,7 @@ const FilterByType = () => {
                     value={filterByType}
                     onChange={handleChangeGenre}
                 >
-                    <MenuItem value={'all'}>
+                    <MenuItem value={''}>
                         <em>Select type</em>
                     </MenuItem>
                     {types.map(({value, title}) => <MenuItem key={value} value={value}>{title}</MenuItem>)}
