@@ -15,8 +15,6 @@ const ToggleSfw = () => {
         dispatch(setSfw())
     };
 
-    console.log(sfw)
-
     return (
         <Stack flexDirection={'row'} alignItems="center" >
             <Switch

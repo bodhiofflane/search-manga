@@ -33,8 +33,6 @@ const jikanService = () => {
             ? (mangaStatus = `&status=${mangaStatus}`)
             : (mangaStatus = '');
 
-        console.log(`${_jikanAllMangaUrlBase}?limit=20${newPageNumber}${sortTerm}${dateRange}${filterByType}${mangaStatus}${sfw}`)
-
         const res = await axiosRequest(
             `${_jikanAllMangaUrlBase}?limit=20${newPageNumber}${sortTerm}${dateRange}${filterByType}${mangaStatus}${sfw}`
         );

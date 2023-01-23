@@ -10,7 +10,7 @@ const Filters = () => {
 
     return (
         <Box>
-            <DateRangeFilter />
+            <DateRangeFilter/>
 
             <FilterByType/>
 

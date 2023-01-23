@@ -27,8 +27,6 @@ const FilterByType = () => {
         dispatch(setFilterByType(event.target.value))
     };
 
-    console.log('Обновление filterByType')
-
     return (
         <>
             <Typography>Type</Typography>

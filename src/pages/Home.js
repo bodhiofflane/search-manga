@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchManga } from '../reducers/mangaSlice';
 
-import { Box, Grid, Container, Typography, Divider } from '@mui/material';
-
 import Filters from '../containers/Filters';
 import MangaList from '../containers/MangaList';
 import MainPagination from '../components/MainPagination';
 import SortSelect from '../components/SortSelect';
 import TotalManga from '../components/TotalManga';
+
+import { Box, Grid, Container, Typography, Divider } from '@mui/material';
+
 
 const Home = () => {
     const currentPage = useSelector((state) => state.manga.currentPage);
