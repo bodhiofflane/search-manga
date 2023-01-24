@@ -43,6 +43,8 @@ const Home = () => {
         mangaStatus,
     ]);
 
+    console.log('home обновился')
+
     return (
         <Box>
             <Container maxWidth="lg">

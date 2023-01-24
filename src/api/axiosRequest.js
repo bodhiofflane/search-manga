@@ -8,7 +8,7 @@ const axiosRequest = async (url) => {
         if(response.statusText === "OK") {
             return response;
         } else {
-            throw new Error('Я обосрался');
+            throw new Error('Request failed...');
         }
 
     } catch(error) {

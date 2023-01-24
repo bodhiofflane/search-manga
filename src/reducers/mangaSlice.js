@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 import jikanService from '../services/jikanService';
 
@@ -17,9 +17,16 @@ const initialState = {
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    ({ currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus }) => {
-        const { getAllManga } = jikanService();
-        return getAllManga(currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus);
+    ({currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus}) => {
+        const {getAllManga} = jikanService();
+        return getAllManga(
+            currentPage,
+            sortBy,
+            dateRange,
+            filterByType,
+            sfw,
+            mangaStatus
+        );
     }
 );
 
@@ -67,7 +74,7 @@ const mangaSlice = createSlice({
     },
 });
 
-const { actions, reducer } = mangaSlice;
+const {actions, reducer} = mangaSlice;
 
 export const {
     setCurrentPage,

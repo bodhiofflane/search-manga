@@ -2,6 +2,7 @@ import { Box, CssBaseline } from '@mui/material';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
 import Home from '../pages/Home';
+import SingleMangaPage from '../pages/SingleMangaPage';
 
 function App() {
     return (
@@ -16,8 +17,8 @@ function App() {
             >
                 <Header />
 
-                <Home />
-
+                {/* <Home /> */}
+                <SingleMangaPage/>
                 <Footer />
             </Box>
         </>
