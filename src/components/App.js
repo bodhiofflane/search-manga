@@ -1,4 +1,7 @@
-import { Box, CssBaseline } from '@mui/material';
+import {Box, CssBaseline} from '@mui/material';
+
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
 import Home from '../pages/Home';
@@ -7,7 +10,7 @@ import SingleMangaPage from '../pages/SingleMangaPage';
 function App() {
     return (
         <>
-            <CssBaseline/>
+            <CssBaseline />
             <Box
                 sx={{
                     display: 'flex',
@@ -15,11 +18,24 @@ function App() {
                     minHeight: '100vh',
                 }}
             >
-                <Header />
-
-                {/* <Home /> */}
-                <SingleMangaPage/>
-                <Footer />
+                <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<Home />}
+                        />
+                        <Route
+                            path="/randomManga"
+                            element={<SingleMangaPage />}
+                        />
+                        <Route
+                            path="*"
+                            element={<h2>Пока недоделал</h2>}
+                        />
+                    </Routes>
+                    <Footer />
+                </BrowserRouter>
             </Box>
         </>
     );

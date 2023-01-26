@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,9 +10,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+//import Link from '@mui/material/Link';
 import BookIcon from '@mui/icons-material/Book';
+import {Link as RouterLink} from 'react-router-dom';
 
-const pages = ['Home', 'Categories', 'Random Manga', 'About'];
+const pages = [
+    {title: 'Home', to: '/'},
+    {title: 'Genres', to: '/genres'},
+    {title: 'Random Manga', to: '/randomManga'},
+    {title: 'About', to: '/about'},
+];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -26,14 +33,13 @@ const Header = () => {
     };
 
     return (
-        <AppBar position="static"
+        <AppBar
+            position="static"
             sx={{mb: '30px'}}
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <BookIcon
-                        sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-                    />
+                    <BookIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -41,7 +47,7 @@ const Header = () => {
                         href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            display: {xs: 'none', md: 'flex'},
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
@@ -55,7 +61,7 @@ const Header = () => {
                     <Box
                         sx={{
                             flexGrow: 1,
-                            display: { xs: 'flex', md: 'none' },
+                            display: {xs: 'flex', md: 'none'},
                         }}
                     >
                         <IconButton
@@ -83,25 +89,27 @@ const Header = () => {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none' },
+                                display: {xs: 'block', md: 'none'},
                             }}
                         >
                             {pages.map((page) => (
                                 <MenuItem
-                                    key={page}
+                                    key={page.title}
                                     onClick={handleCloseNavMenu}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
+                                    <Typography
+                                        component={RouterLink}
+                                        to={page.to}
+                                        textAlign="center"
+                                    >
+                                        {page.title}
                                     </Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
 
-                    <BookIcon
-                        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-                    />
+                    <BookIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -109,7 +117,7 @@ const Header = () => {
                         href=""
                         sx={{
                             mr: 2,
-                            display: { xs: 'flex', md: 'none' },
+                            display: {xs: 'flex', md: 'none'},
                             flexGrow: 1,
                             fontFamily: 'monospace',
                             fontWeight: 700,
@@ -123,30 +131,39 @@ const Header = () => {
                     <Box
                         sx={{
                             flexGrow: 1,
-                            display: { xs: 'none', md: 'flex' },
+                            display: {xs: 'none', md: 'flex'},
                         }}
                     >
                         {pages.map((page) => (
                             <Button
-                                key={page}
+                                component={RouterLink}
+                                to={page.to}
+                                key={page.title}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{my: 2, color: 'white', display: 'block'}}
                             >
-                                {page}
+                                {page.title}
                             </Button>
                         ))}
+                        {/*                         <Link
+                            color={'secondary'}
+                            href="/"
+                        >
+                            Home
+                        </Link>
+                        <Link href="/manga">Random manga</Link> */}
                     </Box>
 
-                    <Box sx={{ display: 'flex' }}>
+                    <Box sx={{display: 'flex'}}>
                         <Button
                             onClick={() => {}}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{my: 2, color: 'white', display: 'block'}}
                         >
                             Log In
                         </Button>
                         <Button
                             onClick={() => {}}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{my: 2, color: 'white', display: 'block'}}
                         >
                             Registry
                         </Button>
