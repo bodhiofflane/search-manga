@@ -9,6 +9,7 @@ import MangaList from '../containers/MangaList';
 import MainPagination from '../components/MainPagination';
 import SortSelect from '../components/SortSelect';
 import TotalManga from '../components/TotalManga';
+import SearchPanel from '../components/SearchPanel';
 
 import { Box, Grid, Container, Typography, Divider } from '@mui/material';
 
@@ -20,6 +21,7 @@ const Home = () => {
     const filterByType = useSelector((state) => state.manga.filterByType);
     const sfw = useSelector((state) => state.manga.sfw);
     const mangaStatus = useSelector((state) => state.manga.mangaStatus);
+    const searchTerm = useSelector((state) => state.manga.searchTerm);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,6 +33,7 @@ const Home = () => {
                 filterByType,
                 sfw,
                 mangaStatus,
+                searchTerm,
             })
         );
     }, [
@@ -41,6 +44,7 @@ const Home = () => {
         filterByType,
         sfw,
         mangaStatus,
+        searchTerm,
     ]);
 
     console.log('home обновился')
@@ -50,15 +54,20 @@ const Home = () => {
             <Container maxWidth="lg">
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={9}>
+
                         <Box>
-                            {/* Page title */}
-                            <Typography
-                                sx={{ mb: '10px' }}
-                                variant="h4"
-                                component={'h2'}
-                            >
-                                Manga
-                            </Typography>
+                            {/* Page title and search */}
+                            <Box sx={{display: 'flex'}}>
+                                {/* <Typography
+                                    sx={{ mb: '10px' }}
+                                    variant="h4"
+                                    component={'h2'}
+                                >
+                                    Manga
+                                </Typography> */}
+                                <SearchPanel/>
+                            </Box>
+
                             <Divider sx={{ my: '15px' }} />
 
                             {/* Section - Sort by ... */}

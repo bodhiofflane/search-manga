@@ -13,11 +13,12 @@ const initialState = {
     filterByType: '',
     sfw: false,
     mangaStatus: '',
+    searchTerm: '',
 };
 
 export const fetchManga = createAsyncThunk(
     'manga/fetchManga',
-    ({currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus}) => {
+    ({currentPage, sortBy, dateRange, filterByType, sfw, mangaStatus, searchTerm}) => {
         const {getAllManga} = jikanService();
         return getAllManga(
             currentPage,
@@ -25,7 +26,8 @@ export const fetchManga = createAsyncThunk(
             dateRange,
             filterByType,
             sfw,
-            mangaStatus
+            mangaStatus,
+            searchTerm,
         );
     }
 );
@@ -53,6 +55,9 @@ const mangaSlice = createSlice({
             state.mangaStatus = action.payload;
             state.dateRange = [];
         },
+        setSearchTerm: (state, action) => {
+            state.searchTerm = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -83,6 +88,7 @@ export const {
     setFilterByType,
     setSfw,
     setMangaStatus,
+    setSearchTerm,
 } = actions;
 
 export default reducer;
