@@ -4,7 +4,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
+
 import Home from '../pages/Home';
+import RandomMangaPage from '../pages/RandomMangaPage';
 import SingleMangaPage from '../pages/SingleMangaPage';
 
 function App() {
@@ -26,12 +28,16 @@ function App() {
                             element={<Home />}
                         />
                         <Route
-                            path="/randomManga"
+                            path="/manga/:mangaId"
                             element={<SingleMangaPage />}
                         />
                         <Route
+                            path="/random"
+                            element={<RandomMangaPage/>}
+                        />
+                        <Route
                             path="*"
-                            element={<h2>Пока недоделал</h2>}
+                            element={<h2>404</h2>}
                         />
                     </Routes>
                     <Footer />

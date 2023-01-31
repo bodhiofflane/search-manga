@@ -2,25 +2,37 @@ import {useEffect} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
 
-import {fetchOneManga} from '../reducers/oneMangaSlice';
+import {clearingRandomState, fetchRandom} from '../reducers/randomSlice';
 
-import { useParams } from 'react-router-dom';
+import {
+    Box,
+    Grid,
+    Container,
+    Typography,
+    Divider,
+    Button,
+    Stack,
+} from '@mui/material';
+import {useCallback} from 'react';
 
-import {Box, Grid, Container, Typography, Divider} from '@mui/material';
-
-
-const SingleMangaPage = () => {
-    const {mangaId} = useParams();
-
-    const oneManga = useSelector((state) => state.oneManga.oneManga);
-    const loadingStatus = useSelector((state) => state.oneManga.loadingStatus);
+const RandomMangaPage = () => {
+    const random = useSelector((state) => state.randomManga.randomManga);
+    const loadingStatus = useSelector((state) => state.randomManga.loadingStatus);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchOneManga(mangaId));
-    }, [dispatch, mangaId]);
+    const getRandomManga = useCallback(() => {
+        dispatch(fetchRandom());
+    }, [dispatch]);
 
-    //console.log(oneManga);
+    useEffect(() => {
+        getRandomManga();
+
+        return () => {
+            dispatch(clearingRandomState());
+        };
+    }, [dispatch, getRandomManga]);
+
+    console.log(random);
 
     const {
         /* id,
@@ -41,7 +53,7 @@ const SingleMangaPage = () => {
         authors,
         genres,
         demographics,
-    } = oneManga;
+    } = random;
 
     if (loadingStatus === 'loading') {
         return <h1>Loading</h1>;
@@ -60,6 +72,16 @@ const SingleMangaPage = () => {
                         md={9}
                     >
                         <Box>
+                            <Stack>
+                                <Button
+                                    onClick={getRandomManga}
+                                    variant="outlined"
+                                    sx={{mb: '10px'}}
+                                >
+                                    Get random
+                                </Button>
+                            </Stack>
+
                             <Grid
                                 container
                                 spacing={3}
@@ -71,7 +93,7 @@ const SingleMangaPage = () => {
                                     <img
                                         style={{width: '100%', height: 'auto'}}
                                         src={thumbnail}
-                                        alt={title}
+                                        alt="anime"
                                     />
                                 </Grid>
                                 <Grid
@@ -307,4 +329,4 @@ const SingleMangaPage = () => {
     );
 };
 
-export default SingleMangaPage;
+export default RandomMangaPage;

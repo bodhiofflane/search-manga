@@ -12,12 +12,12 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 //import Link from '@mui/material/Link';
 import BookIcon from '@mui/icons-material/Book';
-import {Link as RouterLink} from 'react-router-dom';
+import {Link as RouterLink, NavLink} from 'react-router-dom';
 
 const pages = [
     {title: 'Home', to: '/'},
     {title: 'Genres', to: '/genres'},
-    {title: 'Random Manga', to: '/randomManga'},
+    {title: 'Random Manga', to: '/random'},
     {title: 'About', to: '/about'},
 ];
 
@@ -136,7 +136,7 @@ const Header = () => {
                     >
                         {pages.map((page) => (
                             <Button
-                                component={RouterLink}
+                                component={NavLink}
                                 to={page.to}
                                 key={page.title}
                                 onClick={handleCloseNavMenu}

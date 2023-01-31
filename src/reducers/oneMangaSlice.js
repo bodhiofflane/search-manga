@@ -7,19 +7,17 @@ const initialState = {
     loadingStatus: 'waiting',
 };
 
-export const fetchOneManga = createAsyncThunk('oneManga/fatchOneManga', (id) => {
-    const {getOneManga} = jikanService();
-    return getOneManga(id);
-});
+export const fetchOneManga = createAsyncThunk(
+    'oneManga/fatchOneManga',
+    (id) => {
+        const {getOneManga} = jikanService();
+        return getOneManga(id);
+    }
+);
 
 const oneMangaSlice = createSlice({
     name: 'oneManga',
     initialState: initialState,
-    reducers: {
-        setNewStatus: (state) => {
-            state.loadingStatus = !state.oneManga;
-        },
-    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchOneManga.pending, (state) => {
@@ -35,8 +33,6 @@ const oneMangaSlice = createSlice({
     },
 });
 
-const {actions, reducer} = oneMangaSlice;
-
-export const {setNewStatus} = actions;
+const {reducer} = oneMangaSlice;
 
 export default reducer;

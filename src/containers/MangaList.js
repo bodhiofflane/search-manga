@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import MangaListItem from '../components/MangaListItem';
 
+
 import { Grid, Box, CircularProgress } from '@mui/material';
 
 const MangaList = () => {

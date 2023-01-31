@@ -1,3 +1,5 @@
+import {Link as RouterLink} from 'react-router-dom';
+
 import {
     Typography,
     Card,
@@ -6,11 +8,13 @@ import {
     CardActionArea,
 } from '@mui/material';
 
-
 const MangaListItem = ({id, name, thumbnail, publicationPeriod}) => {
     return (
-        <Card /* raised */>
-            <CardActionArea>
+        <Card raised>
+            <CardActionArea
+                component={RouterLink}
+                to={`/manga/${id}`}
+            >
                 <CardMedia
                     component="img"
                     sx={{height: '300px'}}
@@ -25,7 +29,10 @@ const MangaListItem = ({id, name, thumbnail, publicationPeriod}) => {
                     >
                         {name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                    >
                         {publicationPeriod}
                     </Typography>
                 </CardContent>

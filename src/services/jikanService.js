@@ -50,7 +50,12 @@ const jikanService = () => {
         return _transformOneManga(res.data.data);
     };
 
-    return {getAllManga, getOneManga};
+    const getRandomManga = async () => {
+        const res = await axiosRequest(`https://api.jikan.moe/v4/random/manga`)
+        return _transformOneManga(res.data.data);
+    }
+
+    return {getAllManga, getOneManga, getRandomManga};
 };
 
 export default jikanService;
