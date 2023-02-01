@@ -5,11 +5,13 @@ import FilterByGenre from '../components/FilterByGenre';
 import FilterByStatus from '../components/FilterByStatus';
 import FilterByType from '../components/FilterByType';
 import ToggleSfw from '../components/ToggleSfw';
+import ButtonResetFilters from '../components/ButtonResetFilters';
 
 const Filters = () => {
 
     return (
         <Box>
+
             <DateRangeFilter/>
 
             <FilterByType/>
@@ -19,6 +21,8 @@ const Filters = () => {
             <FilterByStatus/>
 
             <ToggleSfw/>
+
+            <ButtonResetFilters/>
         </Box>
     );
 };

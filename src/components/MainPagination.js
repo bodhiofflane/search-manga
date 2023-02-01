@@ -15,13 +15,13 @@ const MainPagination = () => {
         dispatch(setCurrentPage(newPageNumber))
     };
 
-    if(loadingStatus === 'loading') {
+/*     if(loadingStatus === 'loading') {
         return (
             <Box sx={{width: '100%'}}>
                 <LinearProgress/>
             </Box>
         );
-    }
+    } */
 
     return (
         <Box>

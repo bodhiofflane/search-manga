@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 
-import {Form, useFormik} from 'formik';
+import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import {Box, Button, IconButton, TextField} from '@mui/material';
+import {Box, IconButton, TextField} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { setSearchTerm } from '../reducers/mangaSlice';
 

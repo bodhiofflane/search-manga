@@ -1,18 +1,15 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import MangaListItem from '../components/MangaListItem';
+import SkeletonMangaList from '../components/SkeletonMangaList';
 
-
-import { Grid, Box, CircularProgress } from '@mui/material';
+import {Grid} from '@mui/material';
 
 const MangaList = () => {
-
     const allManga = useSelector((state) => state.manga.manga);
     const loadingStatus = useSelector((state) => state.manga.loadingStatus);
-
-
 
     // Просто что бы был мемоизированный массив.
     const renderMangaList = useMemo(() => {
@@ -21,7 +18,7 @@ const MangaList = () => {
                 <Grid
                     xs={6}
                     md={3}
-                    sx={{ alignSelf: 'stretch' }}
+                    sx={{alignSelf: 'stretch'}}
                     key={manga.id}
                     item
                 >
@@ -33,14 +30,22 @@ const MangaList = () => {
 
     if (loadingStatus === 'loading') {
         return (
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <CircularProgress />
-            </Box>
+            <Grid
+                container
+                spacing={3}
+                sx={{alignItems: 'start'}}
+            >
+                <SkeletonMangaList />
+            </Grid>
         );
     }
 
     return (
-        <Grid container spacing={3} sx={{ alignItems: 'start' }}>
+        <Grid
+            container
+            spacing={3}
+            sx={{alignItems: 'start'}}
+        >
             {renderMangaList}
         </Grid>
     );

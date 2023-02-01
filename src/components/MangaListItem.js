@@ -9,6 +9,8 @@ import {
 } from '@mui/material';
 
 const MangaListItem = ({id, name, thumbnail, publicationPeriod}) => {
+
+
     return (
         <Card raised>
             <CardActionArea
@@ -19,7 +21,7 @@ const MangaListItem = ({id, name, thumbnail, publicationPeriod}) => {
                     component="img"
                     sx={{height: '300px'}}
                     image={thumbnail}
-                    alt="green iguana"
+                    alt={name}
                 />
                 <CardContent>
                     <Typography

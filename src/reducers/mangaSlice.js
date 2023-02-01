@@ -58,6 +58,20 @@ const mangaSlice = createSlice({
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
         }
+        ,
+        resetFilters: (state) => {
+            state.manga = [];
+            state.loadingStatus = 'waiting';
+            state.currentPage = 1;
+            state.lastVisiblePage = 0;
+            state.totalItems = 0;
+            state.sortBy = '';
+            state.dateRange = [];
+            state.filterByType = '';
+            state.sfw = false;
+            state.mangaStatus = '';
+            state.searchTerm = '';
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -89,6 +103,7 @@ export const {
     setSfw,
     setMangaStatus,
     setSearchTerm,
+    resetFilters,
 } = actions;
 
 export default reducer;

@@ -58,14 +58,13 @@ const Home = () => {
                         <Box>
                             {/* Page title and search */}
                             <Box sx={{display: 'flex'}}>
-                                {/* <Typography
+                                <Typography
                                     sx={{ mb: '10px' }}
                                     variant="h4"
                                     component={'h2'}
                                 >
                                     Manga
-                                </Typography> */}
-                                <SearchPanel/>
+                                </Typography>
                             </Box>
 
                             <Divider sx={{ my: '15px' }} />
@@ -78,7 +77,9 @@ const Home = () => {
                             <MainPagination />
 
                             <Divider sx={{ my: '15px' }} />
+                            
                             <MangaList />
+
                             <Divider sx={{ my: '15px' }} />
 
                             {/* Часть с пагинацией. Нужно перенести! */}
@@ -89,12 +90,16 @@ const Home = () => {
 
                     <Grid item xs={3}>
                         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+
+                            <SearchPanel/>
+                            <Divider sx={{ my: '15px' }} />
+
                             <Typography
                                 sx={{ mb: '10px' }}
                                 variant="h4"
                                 component={'h2'}
                             >
-                                Filter
+                                Filters
                             </Typography>
 
                             <Filters />
