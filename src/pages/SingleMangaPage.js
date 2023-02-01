@@ -47,6 +47,8 @@ const SingleMangaPage = () => {
         return <h1>Loading</h1>;
     }
 
+    console.log(oneManga)
+
     return (
         <Box>
             <Container maxWidth="lg">
@@ -126,9 +128,9 @@ const SingleMangaPage = () => {
                                 variant="h4"
                                 component={'h2'}
                             >
-                                {demographics && demographics.lenght !== 0
+                                {demographics && demographics.length !== 0
                                     ? demographics.map((item) => item.name)
-                                    : 'Info'}
+                                    : 'Information'}
                             </Typography>
                             <Divider sx={{my: '15px'}} />
                             {score ? (
