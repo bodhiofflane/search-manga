@@ -1,6 +1,8 @@
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
+
+import { Helmet } from 'react-helmet';
 
 import {clearingRandomState, fetchRandom} from '../reducers/randomSlice';
 
@@ -13,11 +15,13 @@ import {
     Button,
     Stack,
 } from '@mui/material';
-import {useCallback} from 'react';
+import ProgressBar from '../components/ProgressBar';
 
 const RandomMangaPage = () => {
     const random = useSelector((state) => state.randomManga.randomManga);
-    const loadingStatus = useSelector((state) => state.randomManga.loadingStatus);
+    const loadingStatus = useSelector(
+        (state) => state.randomManga.loadingStatus
+    );
     const dispatch = useDispatch();
 
     const getRandomManga = useCallback(() => {
@@ -55,12 +59,22 @@ const RandomMangaPage = () => {
         demographics,
     } = random;
 
+
     if (loadingStatus === 'loading') {
-        return <h1>Loading</h1>;
+        return <ProgressBar/>
     }
 
     return (
         <Box>
+
+            <Helmet>
+                <meta
+                    name="description"
+                    content={`Random manga: ${title}`}
+                />
+                <title>{`Random manga: ${title}`}</title>
+            </Helmet>
+
             <Container maxWidth="lg">
                 <Grid
                     container

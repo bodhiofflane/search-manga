@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
-import { fetchManga } from '../reducers/mangaSlice';
+import {fetchManga} from '../reducers/mangaSlice';
+
+import {Helmet} from 'react-helmet';
 
 import Filters from '../containers/Filters';
 import MangaList from '../containers/MangaList';
@@ -11,8 +13,7 @@ import SortSelect from '../components/SortSelect';
 import TotalManga from '../components/TotalManga';
 import SearchPanel from '../components/SearchPanel';
 
-import { Box, Grid, Container, Typography, Divider } from '@mui/material';
-
+import {Box, Grid, Container, Typography, Divider} from '@mui/material';
 
 const Home = () => {
     const currentPage = useSelector((state) => state.manga.currentPage);
@@ -47,19 +48,33 @@ const Home = () => {
         searchTerm,
     ]);
 
-    console.log('home обновился')
+    console.log('home обновился');
 
     return (
         <Box>
-            <Container maxWidth="lg">
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={9}>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="All manga"
+                />
+                <title>All manga</title>
+            </Helmet>
 
+            <Container maxWidth="lg">
+                <Grid
+                    container
+                    spacing={3}
+                >
+                    <Grid
+                        item
+                        xs={12}
+                        md={9}
+                    >
                         <Box>
                             {/* Page title and search */}
                             <Box sx={{display: 'flex'}}>
                                 <Typography
-                                    sx={{ mb: '10px' }}
+                                    sx={{mb: '10px'}}
                                     variant="h4"
                                     component={'h2'}
                                 >
@@ -67,20 +82,20 @@ const Home = () => {
                                 </Typography>
                             </Box>
 
-                            <Divider sx={{ my: '15px' }} />
+                            <Divider sx={{my: '15px'}} />
 
                             {/* Section - Sort by ... */}
                             <SortSelect />
-                            <Divider sx={{ my: '15px' }} />
+                            <Divider sx={{my: '15px'}} />
 
                             {/* Manga List */}
                             <MainPagination />
 
-                            <Divider sx={{ my: '15px' }} />
-                            
+                            <Divider sx={{my: '15px'}} />
+
                             <MangaList />
 
-                            <Divider sx={{ my: '15px' }} />
+                            <Divider sx={{my: '15px'}} />
 
                             {/* Часть с пагинацией. Нужно перенести! */}
                             <MainPagination />
@@ -88,14 +103,16 @@ const Home = () => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={3}>
-                        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-
-                            <SearchPanel/>
-                            <Divider sx={{ my: '15px' }} />
+                    <Grid
+                        item
+                        xs={3}
+                    >
+                        <Box sx={{display: {xs: 'none', md: 'block'}}}>
+                            <SearchPanel />
+                            <Divider sx={{my: '15px'}} />
 
                             <Typography
-                                sx={{ mb: '10px' }}
+                                sx={{mb: '10px'}}
                                 variant="h4"
                                 component={'h2'}
                             >

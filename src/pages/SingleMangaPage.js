@@ -6,6 +6,10 @@ import {fetchOneManga} from '../reducers/oneMangaSlice';
 
 import { useParams } from 'react-router-dom';
 
+import { Helmet } from 'react-helmet';
+
+import ProgressBar from '../components/ProgressBar';
+
 import {Box, Grid, Container, Typography, Divider} from '@mui/material';
 
 
@@ -44,13 +48,22 @@ const SingleMangaPage = () => {
     } = oneManga;
 
     if (loadingStatus === 'loading') {
-        return <h1>Loading</h1>;
+        return <ProgressBar/>
     }
 
-    console.log(oneManga)
+    console.log('Какого хера')
 
     return (
         <Box>
+
+            <Helmet>
+                <meta
+                    name="description"
+                    content={`Manga: ${title}`}
+                />
+                <title>{title}</title>
+            </Helmet>
+
             <Container maxWidth="lg">
                 <Grid
                     container

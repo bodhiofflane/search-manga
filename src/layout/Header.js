@@ -1,5 +1,9 @@
 import {useState} from 'react';
 
+import {useDispatch} from 'react-redux';
+
+import {resetFilters} from '../reducers/mangaSlice';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,12 +20,14 @@ import {Link as RouterLink, NavLink} from 'react-router-dom';
 
 const pages = [
     {title: 'Home', to: '/'},
-    {title: 'Genres', to: '/genres'},
+    //{title: 'Genres', to: '/genres'},
     {title: 'Random Manga', to: '/random'},
     {title: 'About', to: '/about'},
 ];
 
 const Header = () => {
+    const dispatch = useDispatch();
+
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -43,8 +49,8 @@ const Header = () => {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={RouterLink}
+                        to={'/'}
                         sx={{
                             mr: 2,
                             display: {xs: 'none', md: 'flex'},
@@ -53,6 +59,9 @@ const Header = () => {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                        }}
+                        onClick={() => {
+                            dispatch(resetFilters());
                         }}
                     >
                         Manga-App

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -8,15 +8,13 @@ import Header from '../layout/Header';
 import Home from '../pages/Home';
 import RandomMangaPage from '../pages/RandomMangaPage';
 import SingleMangaPage from '../pages/SingleMangaPage';
+import About from '../pages/About';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {Box, CssBaseline} from '@mui/material';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 
-
-
 function App() {
-
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const theme = useMemo(
@@ -24,10 +22,10 @@ function App() {
             createTheme({
                 palette: {
                     primary: {
-                        main: '#1d786a'
+                        main: '#1d786a',
                     },
                     mode: prefersDarkMode ? 'dark' : 'light',
-                }
+                },
             }),
         [prefersDarkMode]
     );
@@ -56,6 +54,10 @@ function App() {
                         <Route
                             path="/random"
                             element={<RandomMangaPage />}
+                        />
+                        <Route
+                            path="/about"
+                            element={<About/>}
                         />
                         <Route
                             path="*"
