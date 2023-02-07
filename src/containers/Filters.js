@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import {Box, Divider, Typography} from '@mui/material';
 
 import DateRangeFilter from '../components/DateRangeFilter';
 import FilterByGenre from '../components/FilterByGenre';
@@ -6,23 +6,33 @@ import FilterByStatus from '../components/FilterByStatus';
 import FilterByType from '../components/FilterByType';
 import ToggleSfw from '../components/ToggleSfw';
 import ButtonResetFilters from '../components/ButtonResetFilters';
+import SearchPanel from '../components/SearchPanel';
 
 const Filters = () => {
-
     return (
         <Box>
+            <Typography
+                sx={{mb: '10px'}}
+                variant="h4"
+                component={'h2'}
+            >
+                Filters
+            </Typography>
 
-            <DateRangeFilter/>
+            <SearchPanel />
+            <Divider sx={{my: '15px'}} />
 
-            <FilterByType/>
+            <DateRangeFilter />
+
+            <FilterByType />
 
             <FilterByGenre />
 
-            <FilterByStatus/>
+            <FilterByStatus />
 
-            <ToggleSfw/>
+            <ToggleSfw />
 
-            <ButtonResetFilters/>
+            <ButtonResetFilters />
         </Box>
     );
 };

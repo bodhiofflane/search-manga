@@ -11,11 +11,13 @@ import MangaList from '../containers/MangaList';
 import MainPagination from '../components/MainPagination';
 import SortSelect from '../components/SortSelect';
 import TotalManga from '../components/TotalManga';
-import SearchPanel from '../components/SearchPanel';
+import DrawerFilters from '../components/DrawerFilters';
 
 import {Box, Grid, Container, Typography, Divider} from '@mui/material';
 
 const Home = () => {
+
+
     const currentPage = useSelector((state) => state.manga.currentPage);
     const sortBy = useSelector((state) => state.manga.sortBy);
     const dateRange = useSelector((state) => state.manga.dateRange);
@@ -65,6 +67,7 @@ const Home = () => {
                     container
                     spacing={3}
                 >
+                    {/* Grid item xs 12, md 9 */}
                     <Grid
                         item
                         xs={12}
@@ -72,7 +75,11 @@ const Home = () => {
                     >
                         <Box>
                             {/* Page title and search */}
-                            <Box sx={{display: 'flex'}}>
+                            <Box sx={{display: 'flex', alignItems: 'center'}}>
+
+                                {/* Drawer */}
+                                <DrawerFilters/>
+
                                 <Typography
                                     sx={{mb: '10px'}}
                                     variant="h4"
@@ -81,20 +88,18 @@ const Home = () => {
                                     Manga
                                 </Typography>
                             </Box>
-
                             <Divider sx={{my: '15px'}} />
 
                             {/* Section - Sort by ... */}
                             <SortSelect />
                             <Divider sx={{my: '15px'}} />
 
-                            {/* Manga List */}
+                            {/* Top pagination */}
                             <MainPagination />
-
                             <Divider sx={{my: '15px'}} />
 
+                            {/* Manga List */}
                             <MangaList />
-
                             <Divider sx={{my: '15px'}} />
 
                             {/* Часть с пагинацией. Нужно перенести! */}
@@ -103,23 +108,15 @@ const Home = () => {
                         </Box>
                     </Grid>
 
+                    {/* Grid item 3 */}
                     <Grid
                         item
                         xs={3}
                     >
                         <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                            <SearchPanel />
-                            <Divider sx={{my: '15px'}} />
-
-                            <Typography
-                                sx={{mb: '10px'}}
-                                variant="h4"
-                                component={'h2'}
-                            >
-                                Filters
-                            </Typography>
 
                             <Filters />
+
                         </Box>
                     </Grid>
                 </Grid>

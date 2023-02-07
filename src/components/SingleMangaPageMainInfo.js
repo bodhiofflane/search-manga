@@ -73,6 +73,7 @@ const SingleMangaPageMainInfo = ({oneMangaInfo}) => {
                                 Background:
                             </Typography>{' '}
                             <Typography>{background}</Typography>
+                            <Divider sx={{my: '15px'}} />{' '}
                         </>
                     ) : null}
 
