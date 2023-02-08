@@ -32,7 +32,6 @@ const SkeletonMangaList = () => {
 
                             <CardContent>
                                 <Typography
-                                    /* gutterBottom */
                                     variant="h5"
                                     component="div"
                                 >

@@ -6,7 +6,6 @@ const Footer = () => {
             component={'footer'}
             sx={{mt: 'auto'}}
         >
-
         </Box>
     );
 };

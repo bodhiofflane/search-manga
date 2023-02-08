@@ -8,7 +8,7 @@ const Page404 = () => {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                /* justifyItems: 'center', */ alignItems: 'center',
+                alignItems: 'center',
             }}
         >
             <Typography

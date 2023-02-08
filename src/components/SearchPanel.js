@@ -39,7 +39,6 @@ const SearchPanel = () => {
                 value={Formik.values.searchQuery}
                 onChange={Formik.handleChange}
                 error={Formik.touched.searchQuery && Formik.errors.searchQuery}
-                //helperText={Formik.touched.searchQuery && Formik.errors.searchQuery}
             />
             <IconButton
                 sx={{ml: '5px'}}

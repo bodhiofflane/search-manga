@@ -17,7 +17,6 @@ import {Box, Grid, Container, Typography, Divider} from '@mui/material';
 
 const Home = () => {
 
-
     const currentPage = useSelector((state) => state.manga.currentPage);
     const sortBy = useSelector((state) => state.manga.sortBy);
     const dateRange = useSelector((state) => state.manga.dateRange);

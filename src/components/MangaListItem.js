@@ -25,7 +25,6 @@ const MangaListItem = ({id, name, thumbnail, publicationPeriod}) => {
                 />
                 <CardContent>
                     <Typography
-                        /* gutterBottom */
                         variant="h5"
                         component="div"
                     >
