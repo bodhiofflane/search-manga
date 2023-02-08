@@ -31,8 +31,6 @@ const RandomMangaPage = () => {
         };
     }, [dispatch, getRandomManga]);
 
-    console.log(random);
-
     const {
         /* id,
         url, */

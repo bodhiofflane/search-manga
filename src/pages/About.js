@@ -1,10 +1,16 @@
 import {Box, Container, Typography} from '@mui/material';
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
 
 const About = () => {
     return (
-        <Box sx={{mt: '60px'}}>
-
+        <Box
+            sx={{
+                mt: '60px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
             <Helmet>
                 <meta
                     name="discription"
@@ -23,7 +29,7 @@ const About = () => {
                     т.д.
                 </Typography>
                 <Typography
-                    sx={{textAlign: 'center'}}
+                    sx={{display: 'block', textAlign: 'center'}}
                     mb={'30px'}
                     component={'a'}
                     href={'https://github.com/bodhiofflane'}

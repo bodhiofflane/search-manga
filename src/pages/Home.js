@@ -50,8 +50,6 @@ const Home = () => {
         searchTerm,
     ]);
 
-    console.log('home обновился');
-
     return (
         <Box>
             <Helmet>
